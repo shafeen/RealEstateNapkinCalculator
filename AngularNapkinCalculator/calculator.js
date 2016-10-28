@@ -59,6 +59,7 @@ angular.module('napkinCalculatorApp', [])
 
     // starting input data model
     calculator.model = {
+        name: "Sample Property",
         propertyPrice: 100000,
         expectedRent: 1100,
         expectedHOA: 150,
@@ -72,4 +73,30 @@ angular.module('napkinCalculatorApp', [])
         interestPct: 4.2,
         loanDurationYears: 30
     };
+
+    calculator.savedModels = [];
+
+    calculator.saveCurrentModel = function () {
+        calculator.savedModels.push({
+            name: calculator.model.name,
+            propertyPrice: calculator.model.propertyPrice,
+            expectedRent: calculator.model.expectedRent,
+            expectedHOA: calculator.model.expectedHOA,
+            expectedInsurance: calculator.model.expectedInsurance,
+            expectedPropTaxes: calculator.model.expectedPropTaxes,
+            expectedVacancyPct: calculator.model.expectedVacancyPct,
+            repairFundPct: calculator.model.repairFundPct,
+            managementCostPct: calculator.model.managementCostPct,
+            capExPct: calculator.model.capExPct,
+            downPaymentPct: calculator.model.downPaymentPct,
+            interestPct: calculator.model.interestPct,
+            loanDurationYears: calculator.model.loanDurationYears
+        });
+    };
+
+    calculator.loadModel = function (model) {
+        calculator.model = model;
+    };
+
+
 });
