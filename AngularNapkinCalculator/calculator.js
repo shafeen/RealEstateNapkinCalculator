@@ -77,21 +77,13 @@ angular.module('napkinCalculatorApp', [])
     calculator.savedModels = [];
 
     calculator.saveCurrentModel = function () {
-        calculator.savedModels.push({
-            name: calculator.model.name,
-            propertyPrice: calculator.model.propertyPrice,
-            expectedRent: calculator.model.expectedRent,
-            expectedHOA: calculator.model.expectedHOA,
-            expectedInsurance: calculator.model.expectedInsurance,
-            expectedPropTaxes: calculator.model.expectedPropTaxes,
-            expectedVacancyPct: calculator.model.expectedVacancyPct,
-            repairFundPct: calculator.model.repairFundPct,
-            managementCostPct: calculator.model.managementCostPct,
-            capExPct: calculator.model.capExPct,
-            downPaymentPct: calculator.model.downPaymentPct,
-            interestPct: calculator.model.interestPct,
-            loanDurationYears: calculator.model.loanDurationYears
-        });
+        var model = {};
+        for (var property in calculator.model) {
+            if (calculator.model.hasOwnProperty(property)) {
+                model[property] = calculator.model[property];
+            }
+        }
+        calculator.savedModels.push(model);
     };
 
     calculator.loadModel = function (model) {

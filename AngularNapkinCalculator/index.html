@@ -19,6 +19,20 @@
                 <input type="text" class="form-control" style="border-radius: 4px"
                        ng-model="calculator.model.name" placeholder="Property Description"/>
             </div>
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-primary" ng-click="calculator.saveCurrentModel()">Save</button>
+
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Load Properties <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="savedModel in calculator.savedModels">
+                            <a href ng-click="calculator.loadModel(savedModel)">{{savedModel.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="form-group form-inline">Purchase Price
             <div class="input-group">
@@ -60,7 +74,7 @@
     </div>
     <!--<p>: <input data-bind="value: " /></p>-->
     <!--<p>: <strong data-bind="text: "></strong></p>-->
-    <p>Down Payment (<span>{{calculator.model.downPaymentPct}}</span>%): <strong>{{calculator.downPaymentAmt()}}</strong></p>
+    <p class="text-danger">Down Payment (<span>{{calculator.model.downPaymentPct}}</span>%): <strong>{{calculator.downPaymentAmt()}}</strong></p>
     <p>Mortgage
         (<span>{{calculator.model.loanDurationYears}}</span> years
         @ <span>{{calculator.model.interestPct}}</span>%):
@@ -69,27 +83,20 @@
     <p>Management: <strong>{{calculator.managementCost()}}</strong></p>
     <p>Repair fund
         (<span>{{calculator.model.repairFundPct}}</span>% repair +
-        <span>{{calculator.model.capExPct}}</span>% capEx): <strong data-bind="text: repairFund"></strong></p>
+        <span>{{calculator.model.capExPct}}</span>% capEx): <strong>{{calculator.repairFund()}}</strong></p>
     <p>Vacancy fund: <strong>{{calculator.vacancyAllowance()}}</strong></p>
 
-    <p>Cash Flow: <strong>{{calculator.cashFlow()}}</strong></p>
+    <p class="text-success">Cash Flow: <strong>{{calculator.cashFlow()}}</strong></p>
     <p>Net Annual Income: <strong>{{calculator.netAnnualIncome()}}</strong></p>
 
     <blockquote>
-        <h2><strong>{{calculator.cashOnCashReturn()}}</strong>%</h2>
+        <h2 class="text-{{calculator.cashOnCashReturn() > 0? 'success' : 'danger'}}">
+            <strong>{{calculator.cashOnCashReturn()}}</strong>%
+        </h2>
         <footer>Cash on Cash Return</footer>
     </blockquote>
     <p>Initial investment doubles approx every <strong>{{calculator.doublerYears()}}</strong> years!</p>
 
-    <button class="btn btn-default" ng-click="calculator.saveCurrentModel()">Save</button>
-</div>
-
-<hr/>
-
-<div class="container">
-    <div ng-repeat="savedModel in calculator.savedModels">
-        <a href ng-click="calculator.loadModel(savedModel)">{{savedModel.name}}</a>
-    </div>
 </div>
 
 <script src="calculator.js"></script>
