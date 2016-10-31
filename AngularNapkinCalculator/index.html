@@ -97,6 +97,29 @@
     </blockquote>
     <p>Initial investment doubles approx every <strong>{{calculator.doublerYears()}}</strong> years!</p>
 
+    <hr>
+    <div>
+        <div class="row">
+            <div class="col-md-4" ng-repeat="(name, savedModel) in calculator.savedModels">
+                <div class="thumbnail">
+                    <!-- <img src="" alt="Some Image">-->
+                    <div class="caption">
+                        <h3><a href="" ng-click="calculator.loadModel(savedModel)">{{name}}</a></h3>
+                        <p>Purchase Price: <strong>${{savedModel.propertyPrice}}</strong></p>
+                        <p class="text-danger">Down Payment (<span>{{savedModel.downPaymentPct}}</span>%): <strong>${{savedModel.downPaymentAmt}}</strong></p>
+                        <p class="text-success">Cash Flow: <strong>${{savedModel.cashFlow}}</strong></p>
+                        <blockquote>
+                            <h2 class="text-{{savedModel.cashOnCashReturn > 0? 'success' : 'danger'}}">
+                                <strong>{{savedModel.cashOnCashReturn}}</strong>%
+                            </h2>
+                            <footer>Cash on Cash Return</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script src="calculator.js"></script>

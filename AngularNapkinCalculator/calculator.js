@@ -3,7 +3,8 @@ angular.module('napkinCalculatorApp', [])
     var calculator = this;
 
     calculator.downPaymentAmt = function () {
-        return calculator.model.downPaymentPct*calculator.model.propertyPrice/100;
+        calculator.model.downPaymentAmt = calculator.model.downPaymentPct * calculator.model.propertyPrice / 100;
+        return calculator.model.downPaymentAmt;
     };
     calculator.mortgagePayment = function () {
         return calculator.getMonthlyMortgagePayment(
@@ -29,7 +30,7 @@ angular.module('napkinCalculatorApp', [])
         return calculator.model.expectedRent*calculator.model.expectedVacancyPct/100;
     };
     calculator.cashFlow = function () {
-        return roundToDp(calculator.model.expectedRent
+        calculator.model.cashFlow = roundToDp(calculator.model.expectedRent
             - calculator.model.expectedHOA
             - calculator.managementCost()
             - calculator.repairFund()
@@ -37,6 +38,7 @@ angular.module('napkinCalculatorApp', [])
             - calculator.model.expectedPropTaxes
             - calculator.mortgagePayment()
             - calculator.vacancyAllowance(), 2);
+        return calculator.model.cashFlow;
     };
     function getMonthlyMortgagePayment(principal, interestPct, years) {
         var i = interestPct/1200;
@@ -51,7 +53,8 @@ angular.module('napkinCalculatorApp', [])
         return roundToDp(calculator.cashFlow()*12, 2);
     };
     calculator.cashOnCashReturn = function () {
-        return roundToDp(calculator.netAnnualIncome()*100 / calculator.downPaymentAmt(), 2);
+        calculator.model.cashOnCashReturn = roundToDp(calculator.netAnnualIncome() * 100 / calculator.downPaymentAmt(), 2);
+        return calculator.model.cashOnCashReturn;
     };
     calculator.doublerYears = function () {
         return Math.ceil(72 / calculator.cashOnCashReturn());
@@ -71,7 +74,11 @@ angular.module('napkinCalculatorApp', [])
         capExPct: 5,
         downPaymentPct: 21,
         interestPct: 4.2,
-        loanDurationYears: 30
+        loanDurationYears: 30,
+
+        downPaymentAmt: null,
+        cashFlow: null,
+        cashOnCashReturn: null
     };
 
     calculator.savedModels = {};
