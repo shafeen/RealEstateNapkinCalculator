@@ -74,7 +74,7 @@ angular.module('napkinCalculatorApp', [])
         loanDurationYears: 30
     };
 
-    calculator.savedModels = [];
+    calculator.savedModels = {};
 
     calculator.saveCurrentModel = function () {
         var model = {};
@@ -83,7 +83,11 @@ angular.module('napkinCalculatorApp', [])
                 model[property] = calculator.model[property];
             }
         }
-        calculator.savedModels.push(model);
+        if (calculator.savedModels[model.name] != undefined) {
+            alert('A property with the name "'+model.name+'" already exists!')
+        } else {
+            calculator.savedModels[model.name] = model;
+        }
     };
 
     calculator.loadModel = function (model) {
