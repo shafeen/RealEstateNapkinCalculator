@@ -87,7 +87,11 @@ angular.module('napkinCalculatorApp', [])
     };
 
     calculator.loadModel = function (model) {
-        calculator.model = model;
+        for (var property in model) {
+            if (model.hasOwnProperty(property)) {
+                calculator.model[property] = model[property];
+            }
+        }
     };
 
 

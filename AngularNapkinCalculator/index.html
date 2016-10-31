@@ -27,7 +27,7 @@
                         Load Properties <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li ng-repeat="savedModel in calculator.savedModels">
+                        <li ng-repeat="savedModel in calculator.savedModels track by $index">
                             <a href ng-click="calculator.loadModel(savedModel)">{{savedModel.name}}</a>
                         </li>
                     </ul>
