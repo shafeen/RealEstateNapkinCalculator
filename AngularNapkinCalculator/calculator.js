@@ -105,5 +105,11 @@ angular.module('napkinCalculatorApp', [])
         }
     };
 
+    calculator.removeModel = function (model) {
+        if (confirm('Are you sure you want to remove "'+model.name+'"?')) {
+            delete calculator.savedModels[model.name];
+        }
+    };
+
 
 });

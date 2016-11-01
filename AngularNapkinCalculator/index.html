@@ -102,9 +102,15 @@
         <div class="row">
             <div class="col-md-4" ng-repeat="(name, savedModel) in calculator.savedModels">
                 <div class="thumbnail">
-                    <!-- <img src="" alt="Some Image">-->
                     <div class="caption">
-                        <h3><a href="" ng-click="calculator.loadModel(savedModel)">{{name}}</a></h3>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h3><a href="" ng-click="calculator.loadModel(savedModel)">{{name}}</a></h3>
+                            </div>
+                            <div class="col-md-2">
+                                <a ng-click="calculator.removeModel(savedModel)"><span class="glyphicon glyphicon-remove-sign"></span></a>
+                            </div>
+                        </div>
                         <p>Purchase Price: <strong>${{savedModel.propertyPrice}}</strong></p>
                         <p class="text-danger">Down Payment (<span>{{savedModel.downPaymentPct}}</span>%): <strong>${{savedModel.downPaymentAmt}}</strong></p>
                         <p class="text-success">Cash Flow: <strong>${{savedModel.cashFlow}}</strong></p>
