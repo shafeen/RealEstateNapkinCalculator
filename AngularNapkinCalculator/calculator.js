@@ -73,7 +73,7 @@ angular.module('napkinCalculatorApp', [])
         managementCostPct: .1,
         capExPct: 5,
         downPaymentPct: 21,
-        interestPct: 4.2,
+        interestPct: 3.82,
         loanDurationYears: 30,
 
         downPaymentAmt: null,
