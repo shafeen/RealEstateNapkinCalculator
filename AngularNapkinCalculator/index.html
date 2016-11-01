@@ -13,8 +13,8 @@
 <div class="container">
     <h2> Prototype Napkin Calculator for Real Estate </h2>
 
-    <div class="">
-        <div class="form-group form-inline">
+    <div class="row">
+        <div class="container form-group form-inline">
             <div class="input-group">
                 <input type="text" class="form-control" style="border-radius: 4px"
                        ng-model="calculator.model.name" placeholder="Property Description"/>
@@ -34,60 +34,104 @@
                 </div>
             </div>
         </div>
-        <div class="form-group form-inline">Purchase Price
-            <div class="input-group">
-                <div class="input-group-addon ">$</div>
-                <input type="number" class="form-control" ng-model="calculator.model.propertyPrice" />
+        <div class="col-md-4 col-sm-4">
+            <div class="form-group ">Purchase Price
+                <div class="input-group">
+                    <div class="input-group-addon ">$</div>
+                    <input type="number" class="form-control" ng-model="calculator.model.propertyPrice" />
+                </div>
             </div>
-        </div>
 
-        <div class="form-group form-inline">Expected rent
-            <div class="input-group">
-                <div class="input-group-addon ">$</div>
-                <input type="number" class="form-control" ng-model="calculator.model.expectedRent" />
+            <div class="form-group ">Expected rent
+                <div class="input-group">
+                    <div class="input-group-addon ">$</div>
+                    <input type="number" class="form-control" ng-model="calculator.model.expectedRent" />
+                </div>
+            </div>
+            <div class="form-group ">Expected HOA
+                <div class="input-group">
+                    <div class="input-group-addon ">$</div>
+                    <input type="number" class="form-control" ng-model="calculator.model.expectedHOA" />
+                </div>
             </div>
         </div>
-        <div class="form-group form-inline">Expected HOA
-            <div class="input-group">
-                <div class="input-group-addon ">$</div>
-                <input type="number" class="form-control" ng-model="calculator.model.expectedHOA" />
+        <div class="col-md-4 col-sm-4">
+            <div class="form-group ">Expected Home Insurance
+                <div class="input-group">
+                    <div class="input-group-addon ">$</div>
+                    <input type="number" class="form-control" ng-model="calculator.model.expectedInsurance" />
+                </div>
+            </div>
+            <div class="form-group ">Expected Prop Taxes
+                <div class="input-group">
+                    <div class="input-group-addon ">$</div>
+                    <input type="number" class="form-control" ng-model="calculator.model.expectedPropTaxes" />
+                </div>
+            </div>
+            <div class="form-group ">Expected Vacancy Rate
+                <div class="input-group">
+                    <input type="number" class="form-control" ng-model="calculator.model.expectedVacancyPct" />
+                    <div class="input-group-addon ">%</div>
+                </div>
             </div>
         </div>
-        <div class="form-group form-inline">Expected Home Insurance
-            <div class="input-group">
-                <div class="input-group-addon ">$</div>
-                <input type="number" class="form-control" ng-model="calculator.model.expectedInsurance" />
+        <div class="col-md-4 col-sm-4">
+            <div class="form-group ">Down Payment ({{calculator.model.downPaymentPct}}%)
+                <div class="input-group">
+                    <div class="input-group-addon ">$</div>
+                    <input type="number" class="form-control" disabled ng-model="calculator.downPaymentAmt()" />
+                </div>
             </div>
-        </div>
-        <div class="form-group form-inline">Expected Prop Taxes
-            <div class="input-group">
-                <div class="input-group-addon ">$</div>
-                <input type="number" class="form-control" ng-model="calculator.model.expectedPropTaxes" />
+            <div class="form-group ">Mortgage
+                ({{calculator.model.loanDurationYears}} years @ {{calculator.model.interestPct}}%):
+                <div class="input-group">
+                    <div class="input-group-addon ">$</div>
+                    <input type="number" class="form-control" disabled ng-model="calculator.mortgagePayment()" />
+                </div>
             </div>
-        </div>
-        <div class="form-group form-inline">Expected Vacancy Rate
-            <div class="input-group">
-                <input type="number" class="form-control" ng-model="calculator.model.expectedVacancyPct" />
-                <div class="input-group-addon ">%</div>
+            <div class="form-group ">Management ({{calculator.model.managementCostPct*100}}%)
+                <div class="input-group">
+                    <div class="input-group-addon ">$</div>
+                    <input type="number" class="form-control" disabled ng-model="calculator.managementCost()" />
+                </div>
             </div>
         </div>
     </div>
-    <!--<p>: <input data-bind="value: " /></p>-->
-    <!--<p>: <strong data-bind="text: "></strong></p>-->
-    <p class="text-danger">Down Payment (<span>{{calculator.model.downPaymentPct}}</span>%): <strong>{{calculator.downPaymentAmt()}}</strong></p>
-    <p>Mortgage
-        (<span>{{calculator.model.loanDurationYears}}</span> years
-        @ <span>{{calculator.model.interestPct}}</span>%):
-        <strong>{{calculator.mortgagePayment()}}</strong>
-    </p>
-    <p>Management: <strong>{{calculator.managementCost()}}</strong></p>
-    <p>Repair fund
-        (<span>{{calculator.model.repairFundPct}}</span>% repair +
-        <span>{{calculator.model.capExPct}}</span>% capEx): <strong>{{calculator.repairFund()}}</strong></p>
-    <p>Vacancy fund: <strong>{{calculator.vacancyAllowance()}}</strong></p>
+    <div class="row">
+        <div class="col-md-2 col-sm-2"></div>
+        <div class="col-md-4 col-sm-4">
+            <div class="form-group ">Repair & CapEx Fund
+                ({{calculator.model.repairFundPct + calculator.model.capExPct}}% )
+                <div class="input-group">
+                    <div class="input-group-addon ">$</div>
+                    <input type="number" class="form-control"
+                           ng-model="calculator.repairFund()" disabled/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <div class="form-group ">Vacancy fund
+                <div class="input-group">
+                    <div class="input-group-addon ">$</div>
+                    <input type="number" class="form-control" disabled
+                           ng-model="calculator.vacancyAllowance()" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-sm-2"></div>
+        <div class="col-md-4 col-sm-4">
+            <p class="text-success">Cash Flow: <strong>${{calculator.cashFlow()}}</strong></p>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <p>Net Annual Income: <strong>${{calculator.netAnnualIncome()}}</strong></p>
+        </div>
+    </div>
 
-    <p class="text-success">Cash Flow: <strong>{{calculator.cashFlow()}}</strong></p>
-    <p>Net Annual Income: <strong>{{calculator.netAnnualIncome()}}</strong></p>
+
+
+
 
     <blockquote>
         <h2 class="text-{{calculator.cashOnCashReturn() > 0? 'success' : 'danger'}}">
