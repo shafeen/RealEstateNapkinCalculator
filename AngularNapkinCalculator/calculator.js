@@ -52,6 +52,12 @@ angular.module('napkinCalculatorApp', [])
     calculator.netAnnualIncome = function () {
         return roundToDp(calculator.cashFlow()*12, 2);
     };
+    calculator.capitalizationRate = function() {
+        calculator.model.capRate = roundToDp((calculator.netAnnualIncome() + calculator.mortgagePayment()*12)*100
+            / calculator.model.propertyPrice, 2);
+        return calculator.model.capRate;
+
+    };
     calculator.cashOnCashReturn = function () {
         calculator.model.cashOnCashReturn = roundToDp(calculator.netAnnualIncome() * 100 / calculator.downPaymentAmt(), 2);
         return calculator.model.cashOnCashReturn;
@@ -78,7 +84,8 @@ angular.module('napkinCalculatorApp', [])
 
         downPaymentAmt: null,
         cashFlow: null,
-        cashOnCashReturn: null
+        cashOnCashReturn: null,
+        capRate: null
     };
 
     calculator.savedModels = {};
