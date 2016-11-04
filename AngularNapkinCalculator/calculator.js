@@ -11,8 +11,10 @@ angular.module('napkinCalculatorApp', ["ngRoute"])
         templateUrl: "compare.html"
     });
 })
-.controller('NapkinCalcCtrl', function () {
+.controller('NapkinCalcCtrl', function ($location) {
     var calculator = this;
+
+    calculator.$location = $location;
 
     calculator.downPaymentAmt = function () {
         calculator.model.downPaymentAmt = calculator.model.downPaymentPct * calculator.model.propertyPrice / 100;
