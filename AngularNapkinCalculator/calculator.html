@@ -124,7 +124,7 @@
     <div class="col-md-4 col-sm-4">
         <div class="bs-callout bs-callout-info">
             <h3 class="text-{{calculator.cashFlow() > 0? 'success' : 'danger'}}">
-                ${{calculator.cashFlow()}}
+                {{calculator.cashFlow() | currency}}
             </h3>
             <footer>Monthly Cash Flow</footer>
         </div>
@@ -132,7 +132,7 @@
     <div class="col-md-4 col-sm-4">
         <div class="bs-callout bs-callout-info">
             <h3 class="text-{{calculator.netAnnualIncome() > 0? 'success' : 'danger'}}">
-                ${{calculator.netAnnualIncome()}}
+                {{calculator.netAnnualIncome() | currency}}
             </h3>
             <footer>Net Annual Income</footer>
         </div>
