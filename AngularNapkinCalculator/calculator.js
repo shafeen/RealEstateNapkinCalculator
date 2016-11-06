@@ -124,6 +124,7 @@ angular.module('napkinCalculatorApp', ["ngRoute"])
                 calculator.model[property] = model[property];
             }
         }
+        $location.path('/calculator');
     };
 
     calculator.removeModel = function (model) {

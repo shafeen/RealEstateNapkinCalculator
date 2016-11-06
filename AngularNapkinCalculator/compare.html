@@ -11,35 +11,42 @@
                 <hr>
                 <div class="row">
                     <div class="row">
-                        <div class="col-md-12 small">
-                            DOWN PAYMENT
-                        </div>
+                        <div class="col-md-12 small">INVESTMENT</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <b>${{savedModel.downPaymentAmt}}</b>
-                        </div>
+                        <div class="col-md-12"><b>{{savedModel.downPaymentAmt | currency}}</b></div>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-9 col-sm-9">
-                <div><h4>{{name}}</h4></div>
                 <div class="panel-body">
+                    <div class=""><h4>{{name}}</h4></div>
+                    <hr/>
                     <div class="row">
                         <div class="col-md-4 small">CASH FLOW</div>
                         <div class="col-md-4 small">ANNUAL INCOME</div>
                         <div class="col-md-4 small">CAP RATE</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4"><b>${{savedModel.cashFlow}}</b></div>
-                        <div class="col-md-4"><b>${{savedModel.cashFlow*12}}</b></div>
+                        <div class="col-md-4"><b>{{savedModel.cashFlow | currency}}</b></div>
+                        <div class="col-md-4"><b>{{savedModel.cashFlow*12 | currency}}</b></div>
                         <div class="col-md-4"><b>{{savedModel.capRate}}%</b></div>
                     </div>
                 </div>
-                <div class="">
-                    <button class="btn btn-default" ng-click="calculator.loadModel(savedModel)">Load into Calculator</button>
-                    <button class="btn btn-danger" ng-click="calculator.removeModel(savedModel)">Remove</button>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <button class="btn btn-default" ng-click="calculator.loadModel(savedModel)">Details</button>
+                        </div>
+                        <div class="col-md-5">
+                            <button class="btn btn-default" ng-click="calculator.loadModel(savedModel, true)">Load to Calc</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-danger" ng-click="calculator.removeModel(savedModel)">Remove</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
