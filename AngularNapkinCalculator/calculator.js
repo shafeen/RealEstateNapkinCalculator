@@ -21,27 +21,24 @@ angular.module('napkinCalculatorApp', ["ngRoute"])
         return calculator.model.downPaymentAmt;
     };
     calculator.mortgagePayment = function () {
-        return calculator.getMonthlyMortgagePayment(
-            calculator.model.propertyPrice()-calculator.downPaymentAmt(),
-            calculator.model.interestPct,
-            calculator.model.loanDurationYears
-        );
-    };
-    calculator.mortgagePayment = function () {
-        return getMonthlyMortgagePayment(
+        calculator.model.mortgagePayment = getMonthlyMortgagePayment(
             calculator.model.propertyPrice-calculator.downPaymentAmt(),
             calculator.model.interestPct,
             calculator.model.loanDurationYears);
+        return calculator.model.mortgagePayment;
     };
     calculator.managementCost = function () {
-        return calculator.model.expectedRent*calculator.model.managementCostPct;
+        calculator.model.managementCost = calculator.model.expectedRent*calculator.model.managementCostPct;
+        return calculator.model.managementCost;
     };
     calculator.repairFund = function () {
-        return calculator.model.expectedRent *
+        calculator.model.repairFund = calculator.model.expectedRent *
             ((calculator.model.repairFundPct + calculator.model.capExPct) / 100);
+        return calculator.model.repairFund;
     };
     calculator.vacancyAllowance = function () {
-        return calculator.model.expectedRent*calculator.model.expectedVacancyPct/100;
+        calculator.model.vacancyAllowance = calculator.model.expectedRent*calculator.model.expectedVacancyPct/100;
+        return calculator.model.vacancyAllowance;
     };
     calculator.cashFlow = function () {
         calculator.model.cashFlow = roundToDp(calculator.model.expectedRent
@@ -64,7 +61,8 @@ angular.module('napkinCalculatorApp', ["ngRoute"])
         return Math.round(num*factor)/factor;
     }
     calculator.netAnnualIncome = function () {
-        return roundToDp(calculator.cashFlow()*12, 2);
+        calculator.model.netAnnualIncome = roundToDp(calculator.cashFlow()*12, 2);
+        return calculator.model.netAnnualIncome;
     };
     calculator.capitalizationRate = function() {
         calculator.model.capRate = roundToDp((calculator.netAnnualIncome() + calculator.mortgagePayment()*12)*100
@@ -77,7 +75,8 @@ angular.module('napkinCalculatorApp', ["ngRoute"])
         return calculator.model.cashOnCashReturn;
     };
     calculator.doublerYears = function () {
-        return Math.ceil(72 / calculator.cashOnCashReturn());
+        calculator.model.doublerYears = Math.ceil(72 / calculator.cashOnCashReturn());
+        return calculator.model.doublerYears;
     };
 
     // starting input data model
@@ -97,9 +96,15 @@ angular.module('napkinCalculatorApp', ["ngRoute"])
         loanDurationYears: 30,
 
         downPaymentAmt: null,
+        mortgagePayment: null,
         cashFlow: null,
+        netAnnualIncome: null,
+        managementCost: null,
+        repairFund: null,
+        vacancyAllowance: null,
         cashOnCashReturn: null,
-        capRate: null
+        capRate: null,
+        doublerYears: null
     };
 
     calculator.savedModels = {};
@@ -118,13 +123,22 @@ angular.module('napkinCalculatorApp', ["ngRoute"])
         }
     };
 
-    calculator.loadModel = function (model) {
+    calculator.loadCalcModel = function (model) {
         for (var property in model) {
             if (model.hasOwnProperty(property)) {
                 calculator.model[property] = model[property];
             }
         }
         $location.path('/calculator');
+    };
+
+    calculator.loadDetailModel = function (model) {
+        calculator.detailModel = calculator.detailModel || {};
+        for (var property in model) {
+            if (model.hasOwnProperty(property)) {
+                calculator.detailModel[property] = model[property];
+            }
+        }
     };
 
     calculator.removeModel = function (model) {

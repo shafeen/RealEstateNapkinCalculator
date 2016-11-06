@@ -11,7 +11,7 @@
                 <hr>
                 <div class="row">
                     <div class="row">
-                        <div class="col-md-12 small">INVESTMENT</div>
+                        <div class="col-md-12 small text-muted">INVESTMENT</div>
                     </div>
                     <div class="row">
                         <div class="col-md-12"><b>{{savedModel.downPaymentAmt | currency}}</b></div>
@@ -23,12 +23,12 @@
                 <div class="panel-body">
                     <div class=""><h4>{{name}}</h4></div>
                     <hr/>
-                    <div class="row">
+                    <div class="row text-muted">
                         <div class="col-md-4 small">CASH FLOW</div>
                         <div class="col-md-4 small">ANNUAL INCOME</div>
                         <div class="col-md-4 small">CAP RATE</div>
                     </div>
-                    <div class="row">
+                    <div class="row text-muted">
                         <div class="col-md-4"><b>{{savedModel.cashFlow | currency}}</b></div>
                         <div class="col-md-4"><b>{{savedModel.cashFlow*12 | currency}}</b></div>
                         <div class="col-md-4"><b>{{savedModel.capRate}}%</b></div>
@@ -37,10 +37,11 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-3">
-                            <button class="btn btn-default" ng-click="calculator.loadModel(savedModel)">Details</button>
+                            <button class="btn btn-default" ng-click="calculator.loadDetailModel(savedModel)"
+                                    data-toggle="modal" data-target="#myModal">Details</button>
                         </div>
                         <div class="col-md-5">
-                            <button class="btn btn-default" ng-click="calculator.loadModel(savedModel, true)">Load to Calc</button>
+                            <button class="btn btn-default" ng-click="calculator.loadCalcModel(savedModel)">Load to Calc</button>
                         </div>
                         <div class="col-md-4">
                             <button class="btn btn-danger" ng-click="calculator.removeModel(savedModel)">Remove</button>
@@ -48,6 +49,155 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detail View Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{calculator.detailModel.name}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Major Costs</div>
+                            <div class="panel-body">
+                                <div class="form-group ">Purchase Price
+                                    <div class="input-group">
+                                        <div class="input-group-addon ">$</div>
+                                        <input type="number" class="form-control"  step="100" ng-model="calculator.detailModel.propertyPrice" />
+                                    </div>
+                                </div>
+                                <div class="form-group ">Down Payment ({{calculator.detailModel.downPaymentPct}}%)
+                                    <div class="input-group">
+                                        <div class="input-group-addon ">$</div>
+                                        <input type="number" class="form-control" disabled ng-model="calculator.model.downPaymentAmt" />
+                                    </div>
+                                </div>
+                                <div class="form-group ">Mortgage
+                                    ({{calculator.detailModel.loanDurationYears}} yrs @ {{calculator.detailModel.interestPct}}%)
+                                    <div class="input-group">
+                                        <div class="input-group-addon ">$</div>
+                                        <input type="number" class="form-control" disabled ng-model="calculator.detailModel.mortgagePayment" />
+                                    </div>
+                                </div>
+                                <div class="form-group ">Expected HOA
+                                    <div class="input-group">
+                                        <div class="input-group-addon ">$</div>
+                                        <input type="number" class="form-control" ng-model="calculator.detailModel.expectedHOA" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Income and Maintenance</div>
+                            <div class="panel-body">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group ">Expected rent
+                                        <div class="input-group">
+                                            <div class="input-group-addon ">$</div>
+                                            <input type="number" class="form-control" step="50" ng-model="calculator.detailModel.expectedRent" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group ">Expected Home Insurance
+                                        <div class="input-group">
+                                            <div class="input-group-addon ">$</div>
+                                            <input type="number" class="form-control" ng-model="calculator.detailModel.expectedInsurance" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">Expected Prop Taxes
+                                        <div class="input-group">
+                                            <div class="input-group-addon ">$</div>
+                                            <input type="number" class="form-control" ng-model="calculator.detailModel.expectedPropTaxes" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">Expected Vacancy Rate
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" ng-model="calculator.detailModel.expectedVacancyPct" />
+                                            <div class="input-group-addon ">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group ">Management ({{calculator.detailModel.managementCostPct*100}}%)
+                                        <div class="input-group">
+                                            <div class="input-group-addon ">$</div>
+                                            <input type="number" class="form-control" disabled ng-model="calculator.detailModel.managementCost" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">Repair & CapEx Fund
+                                        ({{calculator.detailModel.repairFundPct + calculator.detailModel.capExPct}}% )
+                                        <div class="input-group">
+                                            <div class="input-group-addon ">$</div>
+                                            <input type="number" class="form-control"
+                                                   ng-model="calculator.detailModel.repairFund" disabled/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">Vacancy fund
+                                        <div class="input-group">
+                                            <div class="input-group-addon ">$</div>
+                                            <input type="number" class="form-control" disabled
+                                                   ng-model="calculator.detailModel.vacancyAllowance" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="bs-callout bs-callout-info">
+                            <h1 class="text-{{calculator.detailModel.cashOnCashReturn > 0? 'success' : 'danger'}}">
+                                <strong>{{calculator.detailModel.cashOnCashReturn}}</strong>%
+                            </h1>
+                            <footer>Cash on Cash Return</footer>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="bs-callout bs-callout-info">
+                            <h3 class="text-{{calculator.detailModel.cashFlow > 0? 'success' : 'danger'}}">
+                                {{calculator.detailModel.cashFlow | currency}}
+                            </h3>
+                            <footer>Monthly Cash Flow</footer>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="bs-callout bs-callout-info">
+                            <h3 class="text-{{calculator.detailModel.cashFlow*12 > 0? 'success' : 'danger'}}">
+                                {{calculator.detailModel.cashFlow*12 | currency}}
+                            </h3>
+                            <footer>Net Annual Income</footer>
+                        </div>
+                    </div>
+                    <!-- Cap rate hidden -->
+                    <div class="col-md-4 col-sm-4 hidden">
+                        <blockquote>
+                            <h3 class="text-{{calculator.detailModel.capRate > 0? 'success' : 'danger'}}">
+                                {{calculator.detailModel.capRate}}%
+                            </h3>
+                            <footer>Capitalization Rate</footer>
+                        </blockquote>
+                    </div>
+                </div>
+
+
+                <p>Initial investment doubles approx every <strong>{{calculator.detailModel.doublerYears}}</strong> years!</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
