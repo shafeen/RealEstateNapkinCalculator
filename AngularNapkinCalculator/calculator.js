@@ -147,5 +147,13 @@ angular.module('napkinCalculatorApp', ["ngRoute"])
         }
     };
 
+    calculator.toggleCompareOptions = function () {
+        if ($('#sortFilterOptions').hasClass('in')) {
+            $('#sortFilterOptions').collapse('hide');
+        } else {
+            $('#sortFilterOptions').collapse('show');
+        }
+    };
+
 
 });
