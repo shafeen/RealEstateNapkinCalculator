@@ -12,32 +12,75 @@
                 </div>
                 <div id="sortFilterOptions" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                        <div class="dropdown pull-left">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Sort
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">Cash on Cash Return</a></li>
-                                <li><a href="#">Cash Flow</a></li>
-                                <li><a href="#">Investment</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Cap Rate</a></li>
-                            </ul>
+                        <div>
+                            <div class="col-md-6">
+                                <h4>Sorting</h4>
+                                <form action="">
+                                    <input type="radio" aria-label="..." name="sorting" value="Cash on Cash Return">
+                                    Cash on Cash Return <br/>
+                                    <input type="radio" aria-label="..." name="sorting" value="Cash on Cash Return">
+                                    Cash Flow <br/>
+                                    <input type="radio" aria-label="..." name="sorting" value="Cash on Cash Return">
+                                    Investment <br/>
+                                    <input type="radio" aria-label="..." name="sorting" value="Cash on Cash Return">
+                                    Cap Rate <br/>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row"><h4>Filtering</h4></div>
+                                <div class="row">
+                                    <div class="form-group ">Cash on Cash Return
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <input type="checkbox" aria-label="...">
+                                            </span>
+                                            <input type="number" class="form-control" placeholder="minimum return"
+                                                   ng-model="" disabled />
+                                            <div class="input-group-addon ">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group ">Cash Flow
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <input type="checkbox" aria-label="...">
+                                            </span>
+                                            <div class="input-group-addon ">$</div>
+                                            <input type="number" class="form-control"
+                                                   placeholder="minimum monthly cash flow"
+                                                   ng-model="" disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group ">Investment
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <input type="checkbox" aria-label="...">
+                                            </span>
+                                            <div class="input-group-addon ">$</div>
+                                            <input type="number" class="form-control"
+                                                   placeholder="maximum investment required"
+                                                   ng-model="" disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group ">Capitalization Rate
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <input type="checkbox" aria-label="...">
+                                            </span>
+                                            <input type="number" class="form-control" placeholder="minimum cap rate"
+                                                   ng-model="" disabled />
+                                            <div class="input-group-addon ">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="dropdown pull-left" style="padding-left: 5px">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Filter
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <li><a href="#">Cash on Cash Return</a></li>
-                                <li><a href="#">Cash Flow</a></li>
-                                <li><a href="#">Investment</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Cap Rate</a></li>
-                            </ul>
-                        </div>
+
                     </div>
                 </div>
             </div>
