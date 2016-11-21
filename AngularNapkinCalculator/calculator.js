@@ -1,20 +1,6 @@
-angular.module('napkinCalculatorApp', ["ngRoute"])
-.config(function ($routeProvider) {
-    $routeProvider
-    .when("/", {
-        templateUrl: "calculator.html"
-    })
-    .when("/calculator", {
-        templateUrl: "calculator.html"
-    })
-    .when("/compare", {
-        templateUrl: "compare.html"
-    });
-})
+angular.module('napkinCalculatorApp')
 .controller('NapkinCalcCtrl', function ($location) {
     var calculator = this;
-
-    calculator.$location = $location;
 
     calculator.downPaymentAmt = function () {
         calculator.model.downPaymentAmt = calculator.model.downPaymentPct * calculator.model.propertyPrice / 100;
