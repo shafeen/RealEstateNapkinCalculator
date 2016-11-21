@@ -4,7 +4,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="" ng-click="calculator.toggleCompareOptions()"
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="" ng-click="compare.toggleCompareOptions()"
                            aria-expanded="false" aria-controls="sortFilterOptions">
                             Sorting and Filtering Options
                         </a>
@@ -88,7 +88,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-6 col-sm-6" ng-repeat="(name, savedModel) in calculator.savedModels">
+    <div class="col-md-6 col-sm-6" ng-repeat="(name, savedModel) in compare.savedModels">
         <div class="row bs-callout bs-callout-info">
             <div class="col-md-3 col-sm-3">
                 <div class="row">
@@ -126,14 +126,14 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-3">
-                            <button class="btn btn-default" ng-click="calculator.loadDetailModel(savedModel)"
+                            <button class="btn btn-default" ng-click="compare.loadDetailModel(savedModel)"
                                     data-toggle="modal" data-target="#myModal">Details</button>
                         </div>
                         <div class="col-md-5">
-                            <button class="btn btn-default" ng-click="calculator.loadCalcModel(savedModel)">Load to Calc</button>
+                            <button class="btn btn-default" ng-click="compare.loadCalcModel(savedModel)">Load to Calc</button>
                         </div>
                         <div class="col-md-4">
-                            <button class="btn btn-danger" ng-click="calculator.removeModel(savedModel)">Remove</button>
+                            <button class="btn btn-danger" ng-click="compare.removeModel(savedModel)">Remove</button>
                         </div>
                     </div>
 
@@ -149,7 +149,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">{{calculator.detailModel.name}}</h4>
+                <h4 class="modal-title" id="myModalLabel">{{compare.detailModel.name}}</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -160,26 +160,26 @@
                                 <div class="form-group ">Purchase Price
                                     <div class="input-group">
                                         <div class="input-group-addon ">$</div>
-                                        <input type="number" class="form-control"  step="100" ng-model="calculator.detailModel.propertyPrice" />
+                                        <input type="number" class="form-control"  step="100" ng-model="compare.detailModel.propertyPrice" />
                                     </div>
                                 </div>
-                                <div class="form-group ">Down Payment ({{calculator.detailModel.downPaymentPct}}%)
+                                <div class="form-group ">Down Payment ({{compare.detailModel.downPaymentPct}}%)
                                     <div class="input-group">
                                         <div class="input-group-addon ">$</div>
-                                        <input type="number" class="form-control" disabled ng-model="calculator.model.downPaymentAmt" />
+                                        <input type="number" class="form-control" disabled ng-model="compare.model.downPaymentAmt" />
                                     </div>
                                 </div>
                                 <div class="form-group ">Mortgage
-                                    ({{calculator.detailModel.loanDurationYears}} yrs @ {{calculator.detailModel.interestPct}}%)
+                                    ({{compare.detailModel.loanDurationYears}} yrs @ {{compare.detailModel.interestPct}}%)
                                     <div class="input-group">
                                         <div class="input-group-addon ">$</div>
-                                        <input type="number" class="form-control" disabled ng-model="calculator.detailModel.mortgagePayment" />
+                                        <input type="number" class="form-control" disabled ng-model="compare.detailModel.mortgagePayment" />
                                     </div>
                                 </div>
                                 <div class="form-group ">Expected HOA
                                     <div class="input-group">
                                         <div class="input-group-addon ">$</div>
-                                        <input type="number" class="form-control" ng-model="calculator.detailModel.expectedHOA" />
+                                        <input type="number" class="form-control" ng-model="compare.detailModel.expectedHOA" />
                                     </div>
                                 </div>
                             </div>
@@ -193,7 +193,7 @@
                                     <div class="form-group ">Expected rent
                                         <div class="input-group">
                                             <div class="input-group-addon ">$</div>
-                                            <input type="number" class="form-control" step="50" ng-model="calculator.detailModel.expectedRent" />
+                                            <input type="number" class="form-control" step="50" ng-model="compare.detailModel.expectedRent" />
                                         </div>
                                     </div>
                                 </div>
@@ -201,42 +201,42 @@
                                     <div class="form-group ">Expected Home Insurance
                                         <div class="input-group">
                                             <div class="input-group-addon ">$</div>
-                                            <input type="number" class="form-control" ng-model="calculator.detailModel.expectedInsurance" />
+                                            <input type="number" class="form-control" ng-model="compare.detailModel.expectedInsurance" />
                                         </div>
                                     </div>
                                     <div class="form-group ">Expected Prop Taxes
                                         <div class="input-group">
                                             <div class="input-group-addon ">$</div>
-                                            <input type="number" class="form-control" ng-model="calculator.detailModel.expectedPropTaxes" />
+                                            <input type="number" class="form-control" ng-model="compare.detailModel.expectedPropTaxes" />
                                         </div>
                                     </div>
                                     <div class="form-group ">Expected Vacancy Rate
                                         <div class="input-group">
-                                            <input type="number" class="form-control" ng-model="calculator.detailModel.expectedVacancyPct" />
+                                            <input type="number" class="form-control" ng-model="compare.detailModel.expectedVacancyPct" />
                                             <div class="input-group-addon ">%</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
-                                    <div class="form-group ">Management ({{calculator.detailModel.managementCostPct*100}}%)
+                                    <div class="form-group ">Management ({{compare.detailModel.managementCostPct*100}}%)
                                         <div class="input-group">
                                             <div class="input-group-addon ">$</div>
-                                            <input type="number" class="form-control" disabled ng-model="calculator.detailModel.managementCost" />
+                                            <input type="number" class="form-control" disabled ng-model="compare.detailModel.managementCost" />
                                         </div>
                                     </div>
                                     <div class="form-group ">Repair & CapEx Fund
-                                        ({{calculator.detailModel.repairFundPct + calculator.detailModel.capExPct}}% )
+                                        ({{compare.detailModel.repairFundPct + compare.detailModel.capExPct}}% )
                                         <div class="input-group">
                                             <div class="input-group-addon ">$</div>
                                             <input type="number" class="form-control"
-                                                   ng-model="calculator.detailModel.repairFund" disabled/>
+                                                   ng-model="compare.detailModel.repairFund" disabled/>
                                         </div>
                                     </div>
                                     <div class="form-group ">Vacancy fund
                                         <div class="input-group">
                                             <div class="input-group-addon ">$</div>
                                             <input type="number" class="form-control" disabled
-                                                   ng-model="calculator.detailModel.vacancyAllowance" />
+                                                   ng-model="compare.detailModel.vacancyAllowance" />
                                         </div>
                                     </div>
                                 </div>
@@ -247,24 +247,24 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-4">
                         <div class="bs-callout bs-callout-info">
-                            <h1 class="text-{{calculator.detailModel.cashOnCashReturn > 0? 'success' : 'danger'}}">
-                                <strong>{{calculator.detailModel.cashOnCashReturn}}</strong>%
+                            <h1 class="text-{{compare.detailModel.cashOnCashReturn > 0? 'success' : 'danger'}}">
+                                <strong>{{compare.detailModel.cashOnCashReturn}}</strong>%
                             </h1>
                             <footer>Cash on Cash Return</footer>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <div class="bs-callout bs-callout-info">
-                            <h3 class="text-{{calculator.detailModel.cashFlow > 0? 'success' : 'danger'}}">
-                                {{calculator.detailModel.cashFlow | currency}}
+                            <h3 class="text-{{compare.detailModel.cashFlow > 0? 'success' : 'danger'}}">
+                                {{compare.detailModel.cashFlow | currency}}
                             </h3>
                             <footer>Monthly Cash Flow</footer>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <div class="bs-callout bs-callout-info">
-                            <h3 class="text-{{calculator.detailModel.cashFlow*12 > 0? 'success' : 'danger'}}">
-                                {{calculator.detailModel.cashFlow*12 | currency}}
+                            <h3 class="text-{{compare.detailModel.cashFlow*12 > 0? 'success' : 'danger'}}">
+                                {{compare.detailModel.cashFlow*12 | currency}}
                             </h3>
                             <footer>Net Annual Income</footer>
                         </div>
@@ -272,8 +272,8 @@
                     <!-- Cap rate hidden -->
                     <div class="col-md-4 col-sm-4 hidden">
                         <blockquote>
-                            <h3 class="text-{{calculator.detailModel.capRate > 0? 'success' : 'danger'}}">
-                                {{calculator.detailModel.capRate}}%
+                            <h3 class="text-{{compare.detailModel.capRate > 0? 'success' : 'danger'}}">
+                                {{compare.detailModel.capRate}}%
                             </h3>
                             <footer>Capitalization Rate</footer>
                         </blockquote>
@@ -281,7 +281,7 @@
                 </div>
 
 
-                <p>Initial investment doubles approx every <strong>{{calculator.detailModel.doublerYears}}</strong> years!</p>
+                <p>Initial investment doubles approx every <strong>{{compare.detailModel.doublerYears}}</strong> years!</p>
 
             </div>
             <div class="modal-footer">

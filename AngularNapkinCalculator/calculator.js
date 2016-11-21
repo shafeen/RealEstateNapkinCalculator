@@ -1,5 +1,5 @@
 angular.module('napkinCalculatorApp')
-.controller('NapkinCalcCtrl', function ($location) {
+.controller('NapkinCalcCtrl', function ($location, PropertyService) {
     var calculator = this;
 
     calculator.downPaymentAmt = function () {
@@ -66,80 +66,18 @@ angular.module('napkinCalculatorApp')
     };
 
     // starting input data model
-    calculator.model = {
-        name: "Sample Property",
-        propertyPrice: 100000,
-        expectedRent: 1100,
-        expectedHOA: 150,
-        expectedInsurance: 70,
-        expectedPropTaxes: 90,
-        expectedVacancyPct: 8.34,
-        repairFundPct: 5,
-        managementCostPct: .1,
-        capExPct: 5,
-        downPaymentPct: 21,
-        interestPct: 3.82,
-        loanDurationYears: 30,
+    calculator.model = PropertyService.getTempModel() || PropertyService.getNewDefaultModel();
+    PropertyService.clearTempModel(); // TODO: this should be done automatically
 
-        downPaymentAmt: null,
-        mortgagePayment: null,
-        cashFlow: null,
-        netAnnualIncome: null,
-        managementCost: null,
-        repairFund: null,
-        vacancyAllowance: null,
-        cashOnCashReturn: null,
-        capRate: null,
-        doublerYears: null
-    };
-
-    calculator.savedModels = {};
+    calculator.savedModels = PropertyService.getSavedModels();
 
     calculator.saveCurrentModel = function () {
-        var model = {};
-        for (var property in calculator.model) {
-            if (calculator.model.hasOwnProperty(property)) {
-                model[property] = calculator.model[property];
-            }
-        }
-        if (calculator.savedModels[model.name] != undefined) {
-            alert('A property with the name "'+model.name+'" already exists!')
-        } else {
-            calculator.savedModels[model.name] = model;
-        }
+        PropertyService.saveModel(calculator.model);
     };
 
     calculator.loadCalcModel = function (model) {
-        for (var property in model) {
-            if (model.hasOwnProperty(property)) {
-                calculator.model[property] = model[property];
-            }
-        }
-        $location.path('/calculator');
+        PropertyService.pushTempModel(model);
+        calculator.model = PropertyService.getTempModel();
+        PropertyService.clearTempModel();
     };
-
-    calculator.loadDetailModel = function (model) {
-        calculator.detailModel = calculator.detailModel || {};
-        for (var property in model) {
-            if (model.hasOwnProperty(property)) {
-                calculator.detailModel[property] = model[property];
-            }
-        }
-    };
-
-    calculator.removeModel = function (model) {
-        if (confirm('Are you sure you want to remove "'+model.name+'"?')) {
-            delete calculator.savedModels[model.name];
-        }
-    };
-
-    calculator.toggleCompareOptions = function () {
-        if ($('#sortFilterOptions').hasClass('in')) {
-            $('#sortFilterOptions').collapse('hide');
-        } else {
-            $('#sortFilterOptions').collapse('show');
-        }
-    };
-
-
 });
