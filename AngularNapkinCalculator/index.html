@@ -17,12 +17,13 @@
         }
     </style>
 </head>
-<body ng-controller="NapkinCalcCtrl as calculator">
-<!-- TODO: complete the toolbar -->
-<div ng-include="'navbar.html'"></div>
+<body>
+    <!-- TODO: complete the toolbar -->
+    <div ng-include="'navbar.html'"></div>
 
-<div class="container ng-view"></div>
+    <div class="container ng-view" ng-controller="NapkinCalcCtrl as calculator"></div>
 
-<script src="calculator.js"></script>
+    <script src="calculator.js"></script>
+    <script src="navbar.js"></script>
 </body>
 </html>
