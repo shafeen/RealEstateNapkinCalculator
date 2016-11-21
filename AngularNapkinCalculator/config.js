@@ -3,11 +3,11 @@ angular.module('napkinCalculatorApp', ["ngRoute"])
     $routeProvider
         .when("/", {
             templateUrl: "calculator.html",
-            controller: "NapkinCalcCtrl as calculator"
+            controller: "CalculatorCtrl as calculator"
         })
         .when("/calculator", {
             templateUrl: "calculator.html",
-            controller: "NapkinCalcCtrl as calculator"
+            controller: "CalculatorCtrl as calculator"
         })
         .when("/compare", {
             templateUrl: "compare.html",

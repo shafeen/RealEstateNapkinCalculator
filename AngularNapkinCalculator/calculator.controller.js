@@ -1,5 +1,5 @@
 angular.module('napkinCalculatorApp')
-.controller('NapkinCalcCtrl', function ($location, PropertyService) {
+.controller('CalculatorCtrl', function ($location, PropertyService) {
     var calculator = this;
 
     calculator.downPaymentAmt = function () {
