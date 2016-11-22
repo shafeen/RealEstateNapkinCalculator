@@ -19,14 +19,14 @@
 </head>
 <body>
     <!-- TODO: complete the toolbar -->
-    <div ng-include="'navbar.html'"></div>
+    <div ng-include="'navbar/navbar.html'"></div>
 
-    <div class="container ng-view"></div>
+    <div class="container" ng-view></div>
 
     <script src="config.js"></script>
-    <script src="property.service.js"></script>
-    <script src="calculator.controller.js"></script>
-    <script src="compare.controller.js"></script>
-    <script src="navbar.controller.js"></script>
+    <script src="services/property.service.js"></script>
+    <script src="calculator/calculator.controller.js"></script>
+    <script src="compare/compare.controller.js"></script>
+    <script src="navbar/navbar.controller.js"></script>
 </body>
 </html>

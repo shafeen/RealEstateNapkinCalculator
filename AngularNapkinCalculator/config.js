@@ -2,15 +2,15 @@ angular.module('napkinCalculatorApp', ["ngRoute"])
 .config(function ($routeProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "calculator.html",
+            templateUrl: "calculator/calculator.html",
             controller: "CalculatorCtrl as calculator"
         })
         .when("/calculator", {
-            templateUrl: "calculator.html",
+            templateUrl: "calculator/calculator.html",
             controller: "CalculatorCtrl as calculator"
         })
         .when("/compare", {
-            templateUrl: "compare.html",
+            templateUrl: "compare/compare.html",
             controller: "CompareCtrl as compare"
         });
 });
