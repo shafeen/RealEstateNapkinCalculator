@@ -1,46 +1,40 @@
 angular.module('napkinCalculatorApp')
 .service('PropertyService', function () {
 
-    this.defaultModel = {
-        name: "Sample Property",
-        propertyPrice: 100000,
-        expectedRent: 1100,
-        expectedHOA: 150,
-        expectedInsurance: 70,
-        expectedPropTaxes: 90,
-        expectedVacancyPct: 8.34,
-        repairFundPct: 5,
-        managementCostPct: .1,
-        capExPct: 5,
-        downPaymentPct: 21,
-        interestPct: 3.82,
-        loanDurationYears: 30,
+    this.Property = function () {
+        this.name = "Sample Property";
+        this.propertyPrice = 100000;
+        this.expectedRent = 1100;
+        this.expectedHOA = 150;
+        this.expectedInsurance = 70;
+        this.expectedPropTaxes = 90;
+        this.expectedVacancyPct = 8.34;
+        this.repairFundPct = 5;
+        this.managementCostPct = .1;
+        this.capExPct = 5;
+        this.downPaymentPct = 21;
+        this.interestPct = 3.82;
+        this.loanDurationYears = 30;
 
-        downPaymentAmt: null,
-        mortgagePayment: null,
-        cashFlow: null,
-        netAnnualIncome: null,
-        managementCost: null,
-        repairFund: null,
-        vacancyAllowance: null,
-        cashOnCashReturn: null,
-        capRate: null,
-        doublerYears: null
+        this.downPaymentAmt = null;
+        this.mortgagePayment = null;
+        this.cashFlow = null;
+        this.netAnnualIncome = null;
+        this.managementCost = null;
+        this.repairFund = null;
+        this.vacancyAllowance = null;
+        this.cashOnCashReturn = null;
+        this.capRate = null;
+        this.doublerYears = null;
     };
 
-    // tempModel used to pass models between controllers
+    // tempModel used to pass models (Property objects) between controllers
     this.tempModel = null;
 
     this.savedModels = {};
 
     this.getNewDefaultModel = function () {
-        var model = {};
-        for (var property in this.defaultModel) {
-            if (this.defaultModel.hasOwnProperty(property)) {
-                model[property] = this.defaultModel[property];
-            }
-        }
-        return model;
+        return new this.Property();
     };
 
     this.getSavedModels = function() {
