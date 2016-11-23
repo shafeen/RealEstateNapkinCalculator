@@ -34,12 +34,12 @@
                                             <div class="form-group ">Investment
                                                 <div class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="checkbox" aria-label="...">
+                                                <input type="checkbox" aria-label="..." ng-model="compare.filterByInvestment"/>
                                             </span>
                                                     <div class="input-group-addon ">$</div>
                                                     <input type="number" class="form-control"
                                                            placeholder="maximum investment reqd"
-                                                           ng-model="" disabled />
+                                                           ng-disabled="!compare.filterByInvestment" />
                                                 </div>
                                             </div>
                                         </div>
@@ -47,10 +47,10 @@
                                             <div class="form-group ">Capitalization Rate
                                                 <div class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="checkbox" aria-label="...">
+                                                <input type="checkbox" aria-label="..." ng-model="compare.filterByCapRate">
                                             </span>
                                                     <input type="number" class="form-control" placeholder="minimum cap rate"
-                                                           ng-model="" disabled />
+                                                           ng-disabled="!compare.filterByCapRate" />
                                                     <div class="input-group-addon ">%</div>
                                                 </div>
                                             </div>
@@ -61,12 +61,12 @@
                                             <div class="form-group ">Cash Flow
                                                 <div class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="checkbox" aria-label="...">
+                                                <input type="checkbox" aria-label="..." ng-model="compare.filterByCashFlow">
                                             </span>
                                                     <div class="input-group-addon ">$</div>
                                                     <input type="number" class="form-control"
                                                            placeholder="min monthly cash flow"
-                                                           ng-model="" disabled />
+                                                           ng-disabled="!compare.filterByCashFlow" />
                                                 </div>
                                             </div>
                                         </div>
@@ -74,10 +74,10 @@
                                             <div class="form-group ">Cash on Cash Return
                                                 <div class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="checkbox" aria-label="...">
+                                                <input type="checkbox" aria-label="..." ng-model="compare.filterByCOC">
                                             </span>
                                                     <input type="number" class="form-control" placeholder="minimum return"
-                                                           ng-model="" disabled />
+                                                           ng-disabled="!compare.filterByCOC" />
                                                     <div class="input-group-addon ">%</div>
                                                 </div>
                                             </div>
