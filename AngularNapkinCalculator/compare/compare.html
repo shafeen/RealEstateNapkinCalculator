@@ -34,12 +34,15 @@
                                             <div class="form-group ">Investment
                                                 <div class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="checkbox" aria-label="..." ng-model="compare.filterByInvestment"/>
+                                                <input type="checkbox" aria-label="..." ng-model="compare.filterOptions.filterByInvestment"
+                                                       ng-change="compare.disableFilters('investment')" />
                                             </span>
                                                     <div class="input-group-addon ">$</div>
                                                     <input type="number" class="form-control"
                                                            placeholder="maximum investment reqd"
-                                                           ng-disabled="!compare.filterByInvestment" />
+                                                           ng-model="compare.filterOptions.maxInvestment"
+                                                           ng-change="compare.filterOptionsUpdate()"
+                                                           ng-disabled="!compare.filterOptions.filterByInvestment" />
                                                 </div>
                                             </div>
                                         </div>
@@ -47,10 +50,13 @@
                                             <div class="form-group ">Capitalization Rate
                                                 <div class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="checkbox" aria-label="..." ng-model="compare.filterByCapRate">
+                                                <input type="checkbox" aria-label="..." ng-model="compare.filterOptions.filterByCapRate"
+                                                       ng-change="compare.disableFilters('caprate')"/>
                                             </span>
                                                     <input type="number" class="form-control" placeholder="minimum cap rate"
-                                                           ng-disabled="!compare.filterByCapRate" />
+                                                           ng-model="compare.filterOptions.minCapRate"
+                                                           ng-change="compare.filterOptionsUpdate()"
+                                                           ng-disabled="!compare.filterOptions.filterByCapRate" />
                                                     <div class="input-group-addon ">%</div>
                                                 </div>
                                             </div>
@@ -61,12 +67,15 @@
                                             <div class="form-group ">Cash Flow
                                                 <div class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="checkbox" aria-label="..." ng-model="compare.filterByCashFlow">
+                                                <input type="checkbox" aria-label="..." ng-model="compare.filterOptions.filterByCashFlow"
+                                                       ng-change="compare.disableFilters('cashflow')"/>
                                             </span>
                                                     <div class="input-group-addon ">$</div>
                                                     <input type="number" class="form-control"
                                                            placeholder="min monthly cash flow"
-                                                           ng-disabled="!compare.filterByCashFlow" />
+                                                           ng-model="compare.filterOptions.minCashFlow"
+                                                           ng-change="compare.filterOptionsUpdate()"
+                                                           ng-disabled="!compare.filterOptions.filterByCashFlow" />
                                                 </div>
                                             </div>
                                         </div>
@@ -74,10 +83,13 @@
                                             <div class="form-group ">Cash on Cash Return
                                                 <div class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="checkbox" aria-label="..." ng-model="compare.filterByCOC">
+                                                <input type="checkbox" aria-label="..." ng-model="compare.filterOptions.filterByCOC"
+                                                       ng-change="compare.disableFilters('coc')"/>
                                             </span>
                                                     <input type="number" class="form-control" placeholder="minimum return"
-                                                           ng-disabled="!compare.filterByCOC" />
+                                                           ng-model="compare.filterOptions.minCOCReturn"
+                                                           ng-change="compare.filterOptionsUpdate()"
+                                                           ng-disabled="!compare.filterOptions.filterByCOC" />
                                                     <div class="input-group-addon ">%</div>
                                                 </div>
                                             </div>
