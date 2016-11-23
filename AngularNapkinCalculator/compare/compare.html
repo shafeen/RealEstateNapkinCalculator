@@ -13,8 +13,8 @@
                 <div id="sortFilterOptions" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
                         <div>
-                            <div class="col-md-6">
-                                <h4>Sorting</h4>
+                            <div class="col-md-3">
+                                <h4>Sort by</h4>
                                 <form action="">
                                     <input type="radio" aria-label="..." name="sorting" value="Cash on Cash Return">
                                     Cash on Cash Return <br/>
@@ -26,58 +26,67 @@
                                     Cap Rate <br/>
                                 </form>
                             </div>
-                            <div class="col-md-6">
-                                <div class="row"><h4>Filtering</h4></div>
+                            <div class="col-md-9">
+                                <div class="row"><h4>Filter by</h4></div>
                                 <div class="row">
-                                    <div class="form-group ">Cash on Cash Return
-                                        <div class="input-group">
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="form-group ">Investment
+                                                <div class="input-group">
                                             <span class="input-group-addon">
                                                 <input type="checkbox" aria-label="...">
                                             </span>
-                                            <input type="number" class="form-control" placeholder="minimum return"
-                                                   ng-model="" disabled />
-                                            <div class="input-group-addon ">%</div>
+                                                    <div class="input-group-addon ">$</div>
+                                                    <input type="number" class="form-control"
+                                                           placeholder="maximum investment reqd"
+                                                           ng-model="" disabled />
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group ">Cash Flow
-                                        <div class="input-group">
+                                        <div class="row">
+                                            <div class="form-group ">Capitalization Rate
+                                                <div class="input-group">
                                             <span class="input-group-addon">
                                                 <input type="checkbox" aria-label="...">
                                             </span>
-                                            <div class="input-group-addon ">$</div>
-                                            <input type="number" class="form-control"
-                                                   placeholder="minimum monthly cash flow"
-                                                   ng-model="" disabled />
+                                                    <input type="number" class="form-control" placeholder="minimum cap rate"
+                                                           ng-model="" disabled />
+                                                    <div class="input-group-addon ">%</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group ">Investment
-                                        <div class="input-group">
+                                    <div class="col-md-5 col-md-offset-1">
+                                        <div class="row">
+                                            <div class="form-group ">Cash Flow
+                                                <div class="input-group">
                                             <span class="input-group-addon">
                                                 <input type="checkbox" aria-label="...">
                                             </span>
-                                            <div class="input-group-addon ">$</div>
-                                            <input type="number" class="form-control"
-                                                   placeholder="maximum investment required"
-                                                   ng-model="" disabled />
+                                                    <div class="input-group-addon ">$</div>
+                                                    <input type="number" class="form-control"
+                                                           placeholder="min monthly cash flow"
+                                                           ng-model="" disabled />
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group ">Capitalization Rate
-                                        <div class="input-group">
+                                        <div class="row">
+                                            <div class="form-group ">Cash on Cash Return
+                                                <div class="input-group">
                                             <span class="input-group-addon">
                                                 <input type="checkbox" aria-label="...">
                                             </span>
-                                            <input type="number" class="form-control" placeholder="minimum cap rate"
-                                                   ng-model="" disabled />
-                                            <div class="input-group-addon ">%</div>
+                                                    <input type="number" class="form-control" placeholder="minimum return"
+                                                           ng-model="" disabled />
+                                                    <div class="input-group-addon ">%</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
+
+
                             </div>
                         </div>
 
