@@ -66,7 +66,7 @@ angular.module('napkinCalculatorApp')
     };
 
     // starting input data model
-    calculator.model = PropertyService.getTempModel() || PropertyService.getNewDefaultModel();
+    calculator.model = PropertyService.getTempModel() || new PropertyService.Property();
     PropertyService.clearTempModel(); // TODO: this should be done automatically
 
     calculator.savedModels = PropertyService.getSavedModels();

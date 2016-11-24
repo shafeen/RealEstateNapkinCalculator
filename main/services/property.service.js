@@ -33,10 +33,6 @@ angular.module('napkinCalculatorApp')
 
     this.savedModels = {};
 
-    this.getNewDefaultModel = function () {
-        return new this.Property();
-    };
-
     this.getSavedModels = function() {
         return this.savedModels;
     };
