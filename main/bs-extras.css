@@ -26,6 +26,13 @@
 .btn-danger.btn-outline:hover {
     color: #fff;
 }
+.btn-primary.btn-outline:focus,
+.btn-success.btn-outline:focus,
+.btn-info.btn-outline:focus,
+.btn-warning.btn-outline:focus,
+.btn-danger.btn-outline:focus {
+    color: #fff;
+}
 
 /* Callouts  */
 .bs-callout {
