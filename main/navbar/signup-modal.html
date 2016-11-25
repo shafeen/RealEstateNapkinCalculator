@@ -1,0 +1,40 @@
+<div id="signup-modal" class="modal fade bs-example-modal-lg"
+     tabindex="-1" role="dialog">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title text-center">Create New Account</h3></div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-8">
+                        <div id="signup-form">
+                            <div class="panel panel-danger" id="signup-errorPanel" hidden>
+                                <div class="panel-body text-danger"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signup-email">Email address</label>
+                                <input type="email" class="form-control" id="signup-email" placeholder="Email">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signup-password">Password</label>
+                                <input type="password" class="form-control" id="signup-password" placeholder="Password">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signup-password">Confirm Password</label>
+                                <input type="password" class="form-control" id="signup-password-confirm"
+                                       placeholder="Just making sure you got it right">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" ng-click="navbar.signup()">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>

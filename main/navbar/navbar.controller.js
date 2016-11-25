@@ -19,11 +19,35 @@ angular.module('napkinCalculatorApp')
             $('#errorPanel').show().find('.panel-body').text('Login failed');
             $timeout(function () {
                 $('#errorPanel').hide();
-            }, 3000)
+            }, 4000)
         });
     };
 
+    const SIGNUP_URL = '/signup';
+    const SIGNUP_SUCCESS_URL = '/dashboard';
+    navbar.signup = function () {
+        // TODO: complete this -> create and bind verification functions
+        console.log('attempting to sign up!');
+        var signupParams = {
+            email: $('#signup-email').val(),
+            password: $('#signup-password').val()
+        };
+        $http.post(SIGNUP_URL, signupParams)
+            .then(function success() {
+                $window.location.href = SIGNUP_SUCCESS_URL;
+            }, function failure() {
+                $('#signup-errorPanel').show().find('.panel-body').text('Signup failed');
+                $timeout(function () {
+                    $('#signup-errorPanel').hide();
+                }, 4000)
+            });
+    };
+
+    navbar.verifySignup = function() {
+        // TODO: complete this
+    };
+
     navbar.clicked = function () {
-        alert('test click succeeded!')
+        console.log('test click succeeded!');
     };
 });

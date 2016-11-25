@@ -1,69 +1,74 @@
-<nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarCtrl as navbar">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Napkin Calculator</a>
-    </div>
+<div ng-controller="NavbarCtrl as navbar">
+  <nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Napkin Calculator</a>
+      </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="{{(navbar.$location.path() == '/calculator' || navbar.$location.path() == '/')? 'active' : ''}}">
-          <a href="#calculator">Calculator <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="{{navbar.$location.path() == '/compare'? 'active' : ''}}">
-          <a href="#compare">Compare Properties</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="/login" class="dropdown-toggle" data-toggle="dropdown">Log In <span class="caret"></span></a>
-          <ul class="dropdown-menu" style="width: 300px; " role="menu">
-            <li class="col-lg-12">
-              <div class="text-center"><h3><b>Log In</b></h3></div>
-              <form id="login-form" ng-submit="navbar.login()" method="post" role="form" autocomplete="off">
-                <div class="panel panel-danger" id="errorPanel" hidden><div class="panel-body text-danger"></div></div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="{{(navbar.$location.path() == '/calculator' || navbar.$location.path() == '/')? 'active' : ''}}">
+            <a href="#calculator">Calculator <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="{{navbar.$location.path() == '/compare'? 'active' : ''}}">
+            <a href="#compare">Compare Properties</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="/login" class="dropdown-toggle" data-toggle="dropdown">Log In <span class="caret"></span></a>
+            <ul class="dropdown-menu" style="width: 300px; " role="menu">
+              <li class="col-lg-12">
+                <div class="text-center"><h3><b>Log In</b></h3></div>
+                <form id="login-form" ng-submit="navbar.login()" method="post" role="form" autocomplete="off">
+                  <div class="panel panel-danger" id="errorPanel" hidden><div class="panel-body text-danger"></div></div>
 
-                <div class="form-group">
-                  <label for="username">Email Address</label>
-                  <input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="" autocomplete="off" required>
-                </div>
+                  <div class="form-group">
+                    <label for="username">Email Address</label>
+                    <input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="" autocomplete="off" required>
+                  </div>
 
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off" required>
-                </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off" required>
+                  </div>
 
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-xs-7">
-                      <div class="text-center" >
-                        <a href="/recover" tabindex="5"
-                           class="forgot-password">Forgot Password?</a>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-xs-7">
+                        <div class="text-center" >
+                          <a href="/recover" tabindex="5"
+                             class="forgot-password">Forgot Password?</a>
+                        </div>
+                      </div>
+                      <div class="col-xs-5 pull-right">
+                        <input type="submit" name="login-submit" id="login-submit" tabindex="4"
+                               class="form-control btn btn-primary" value="Log In">
                       </div>
                     </div>
-                    <div class="col-xs-5 pull-right">
-                      <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-primary" value="Log In">
-                    </div>
                   </div>
-                </div>
-              </form>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <!-- TODO: make sign up a modal -->
-          <div class="navbar-form" role="alertdialog">
-            <a href="" class="btn btn-success btn-outline" ng-click="navbar.clicked()">Sign Up</a>
-          </div>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+                </form>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <div class="navbar-form" role="alertdialog">
+              <a href="" class="btn btn-success btn-outline"
+                 data-toggle="modal" data-target="#signup-modal">Sign Up</a>
+            </div>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div ng-include="'navbar/signup-modal.html'"></div>
+</div>
+
