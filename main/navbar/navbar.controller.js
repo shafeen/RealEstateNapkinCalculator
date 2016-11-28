@@ -49,7 +49,7 @@ angular.module('napkinCalculatorApp')
     function verifySignupParams() {
         // TODO: complete this and verify email and password here ---> maybe do it the angular way
 
-        // TODO: verify email here
+        // TODO: verify email here --> do it the angular way
         var emailValid = validateEmail($('#signup-email').val());
         if (!emailValid) {
             invalidEmailHandler('You must enter a valid email address.');
@@ -84,20 +84,18 @@ angular.module('napkinCalculatorApp')
     }
 
     function invalidEmailHandler(message) {
-        $('#signup-email').parent().addClass('has-error');
+        navbar.emailError = true;
         setSignupErrorMsg(message, true);
         $timeout(function () {
-            $('#signup-email').parent().removeClass('has-error');
+            navbar.emailError = false;
         }, 4000);
     }
 
     function passwordErrorHandler(message) {
-        $('#signup-password-confirm').parent().addClass('has-error');
-        $('#signup-password').parent().addClass('has-error');
+        navbar.passwordError = true;
         setSignupErrorMsg(message, true);
         $timeout(function () {
-            $('#signup-password-confirm').parent().removeClass('has-error');
-            $('#signup-password').parent().removeClass('has-error');
+            navbar.passwordError = false;
         }, 4000);
     }
 
