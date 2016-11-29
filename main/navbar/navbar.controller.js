@@ -3,7 +3,6 @@ angular.module('napkinCalculatorApp')
     var navbar = this;
 
     navbar.$location = $location;
-    navbar.$window = $window;
 
     const LOGIN_URL = '/login';
     const LOGIN_SUCCESS_URL = '/dashboard';
@@ -26,9 +25,6 @@ angular.module('napkinCalculatorApp')
     const SIGNUP_URL = '/signup';
     const SIGNUP_SUCCESS_URL = '/dashboard';
     navbar.signup = function () {
-        // TODO: complete this -> create and bind verification functions
-        console.log('attempting to sign up!');
-
         if (verifySignupParams() == false) {
             console.log('there were errors in the signup params!');
             return;
@@ -56,8 +52,10 @@ angular.module('napkinCalculatorApp')
             return false;
         }
 
-        var passwordsDontMatch = $('#signup-password').val() != $('#signup-password-confirm').val();
-        var passwordValid = passwordsDontMatch ? false : validatePassword($('#signup-password').val());
+        var signupPassword = $('#signup-password').val();
+        var confirmedSignupPassword = $('#signup-password-confirm').val();
+        var passwordsDontMatch = signupPassword != confirmedSignupPassword;
+        var passwordValid = passwordsDontMatch ? false : validatePassword(signupPassword);
         if (passwordsDontMatch) {
             passwordErrorHandler('Your passwords must match.');
             return false;
