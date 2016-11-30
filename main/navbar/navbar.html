@@ -31,14 +31,18 @@
                 <form id="login-form" ng-submit="navbar.login()" method="post" role="form" autocomplete="off">
                   <div class="panel panel-danger" id="errorPanel" hidden><div class="panel-body text-danger"></div></div>
 
-                  <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="" autocomplete="off" required>
+                  <div class="form-group ">
+                    <div class="input-group">
+                      <div class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></div>
+                      <input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="" autocomplete="off" required>
+                    </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off" required>
+                    <div class="input-group">
+                      <div class="input-group-addon"><i class="fa fa-lock fa-fw"></i></div>
+                      <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off" required>
+                    </div>
                   </div>
 
                   <div class="form-group">
@@ -62,7 +66,7 @@
           <li>
             <div class="navbar-form" role="alertdialog">
               <a href="" class="btn btn-success btn-outline"
-                 data-toggle="modal" data-target="#signup-modal">Sign Up</a>
+                 data-toggle="modal" data-target="#signup-modal"><i class="fa fa-lock"></i> Sign Up</a>
             </div>
           </li>
         </ul>
