@@ -1,8 +1,15 @@
 angular.module('napkinCalculatorApp')
-.controller('NavbarCtrl', function ($http, $location, $window, $timeout) {
+.controller('NavbarCtrl', function ($scope, $http, $location, $window, $timeout) {
     var navbar = this;
 
     navbar.$location = $location;
+
+    $scope.$on('$locationChangeStart', function (e) {
+        navbar.loading = true;
+    });
+    $scope.$on('$locationChangeSuccess', function (e) {
+        navbar.loading = false;
+    });
 
     const LOGIN_URL = '/login';
     const LOGIN_SUCCESS_URL = '/dashboard';

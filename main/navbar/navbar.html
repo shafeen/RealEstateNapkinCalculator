@@ -21,6 +21,9 @@
           <li class="{{navbar.$location.path() == '/compare'? 'active' : ''}}">
             <a href="#compare">Compare Properties</a>
           </li>
+          <li ng-show="navbar.loading">
+            <a href=""><i class="fa fa-cog fa-refresh fa-lg text-info {{navbar.loading? 'fa-spin' : ''}}"></i></a>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
