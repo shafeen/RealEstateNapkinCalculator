@@ -15,16 +15,17 @@ angular.module('napkinCalculatorApp')
     const LOGIN_SUCCESS_URL = '/dashboard';
     navbar.login = function() {
         var loginParams = {
-            email: $('#email').val(),
-            password: $('#password').val()
+            email: navbar.loginEmail,
+            password: navbar.loginPass
         };
         $http.post(LOGIN_URL, loginParams)
         .then(function success() {
             $window.location.href = LOGIN_SUCCESS_URL;
         }, function failure() {
-            $('#errorPanel').show().find('.panel-body').text('Login failed');
+            navbar.showLoginErrorMsg = true;
+            navbar.loginErrorMsg = 'Login failed';
             $timeout(function () {
-                $('#errorPanel').hide();
+                navbar.showLoginErrorMsg = false;
             }, 4000)
         });
     };

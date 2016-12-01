@@ -1,0 +1,39 @@
+<div class="text-center"><h3><b>Log In</b></h3></div>
+<form id="login-form" ng-submit="navbar.login()" method="post" role="form" autocomplete="off">
+  <div class="panel panel-danger" id="errorPanel" ng-show="navbar.showLoginErrorMsg">
+    <div class="panel-body text-danger">{{navbar.loginErrorMsg}}</div>
+  </div>
+
+  <div class="form-group ">
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></div>
+      <input type="text" name="email" id="email" tabindex="1" class="form-control"
+             ng-model="navbar.loginEmail"
+             placeholder="Email Address" value="" autocomplete="off" required />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-lock fa-fw"></i></div>
+      <input type="password" name="password" id="password" tabindex="2" class="form-control"
+             ng-model="navbar.loginPass"
+             placeholder="Password" autocomplete="off" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-xs-7">
+        <div class="text-center" >
+          <a href="/recover" tabindex="5"
+             class="forgot-password">Forgot Password?</a>
+        </div>
+      </div>
+      <div class="col-xs-5 pull-right">
+        <input type="submit" name="login-submit" id="login-submit" tabindex="4"
+               class="form-control btn btn-primary" value="Log In">
+      </div>
+    </div>
+  </div>
+</form>
