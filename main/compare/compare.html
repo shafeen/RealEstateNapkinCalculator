@@ -131,7 +131,7 @@
 
             <div class="col-md-9 col-sm-9">
                 <div class="panel-body">
-                    <div class=""><h4>{{name}}</h4></div>
+                    <div class=""><h4><i class="fa fa-map-marker fa-fw text-danger"></i> {{name}}</h4></div>
                     <hr/>
                     <div class="row text-muted">
                         <div class="col-md-4 small">CASH FLOW</div>
@@ -148,13 +148,13 @@
                     <div class="row">
                         <div class="col-md-3">
                             <button class="btn btn-default" ng-click="compare.loadDetailModel(savedModel)"
-                                    data-toggle="modal" data-target="#myModal">Details</button>
+                                    data-toggle="modal" data-target="#myModal"><i class="fa fa-list"></i> Details</button>
                         </div>
                         <div class="col-md-5">
-                            <button class="btn btn-default" ng-click="compare.loadCalcModel(savedModel)">Load to Calc</button>
+                            <button class="btn btn-default" ng-click="compare.loadCalcModel(savedModel)"><i class="fa fa-calculator"></i> Load to Calc</button>
                         </div>
                         <div class="col-md-4">
-                            <button class="btn btn-danger" ng-click="compare.removeModel(savedModel)">Remove</button>
+                            <button class="btn btn-danger btn-outline" ng-click="compare.removeModel(savedModel)"><i class="fa fa-trash-o"></i> Remove</button>
                         </div>
                     </div>
 
