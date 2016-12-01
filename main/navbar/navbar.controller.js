@@ -38,31 +38,25 @@ angular.module('napkinCalculatorApp')
         }
 
         var signupParams = {
-            email: $('#signup-email').val(),
-            password: $('#signup-password').val()
+            email: navbar.signupEmail,
+            password: navbar.signupPass
         };
         $http.post(SIGNUP_URL, signupParams)
             .then(function success() {
                 $window.location.href = SIGNUP_SUCCESS_URL;
             }, function failure() {
-                setSignupErrorMsg('Signup failed', true);
+                setSignupErrorMsg('Signup failed. Try again later.', true);
             });
     };
 
     function verifySignupParams() {
-        // TODO: complete this and verify email and password here ---> maybe do it the angular way
-
-        // TODO: verify email here --> do it the angular way
-        var emailValid = validateEmail($('#signup-email').val());
-        if (!emailValid) {
+        if (!isValidEmail(navbar.signupEmail)) {
             invalidEmailHandler('You must enter a valid email address.');
             return false;
         }
 
-        var signupPassword = $('#signup-password').val();
-        var confirmedSignupPassword = $('#signup-password-confirm').val();
-        var passwordsDontMatch = signupPassword != confirmedSignupPassword;
-        var passwordValid = passwordsDontMatch ? false : validatePassword(signupPassword);
+        var passwordsDontMatch = navbar.signupPass != navbar.signupPassConfirm;
+        var passwordValid = passwordsDontMatch ? false : isValidPassword(navbar.signupPass);
         if (passwordsDontMatch) {
             passwordErrorHandler('Your passwords must match.');
             return false;
@@ -74,12 +68,12 @@ angular.module('napkinCalculatorApp')
         return true;
     }
 
-    function validateEmail(email) {
+    function isValidEmail(email) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     }
 
-    function validatePassword(password) {
+    function isValidPassword(password) {
         const MIN_LENGTH = 8;
         // TODO: add a few more password rules (min length, alphanumeric requirement, etc)
         if (password.length < MIN_LENGTH) {
@@ -105,10 +99,11 @@ angular.module('napkinCalculatorApp')
     }
 
     function setSignupErrorMsg(message, hideAfterwards) {
-        $('#signup-errorPanel').show().find('.panel-body').text(message);
+        navbar.signupErrorMsg = message;
+        navbar.showSignupErrorMsg = true;
         if (hideAfterwards) {
             $timeout(function () {
-                $('#signup-errorPanel').hide();
+                navbar.showSignupErrorMsg = false;
             }, 4000);
         }
 
